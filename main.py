@@ -33,6 +33,35 @@ for file_name in os.listdir('C:/Users/wwwya/Desktop/pdf/extract_text'): #loop on
 
     #Positives extraction
     sample_positive = re.search(r'Detected\:(.*?)Controls',page_content).group(1)
+
+    result_covid = sample_positive.find("Coronavirus2")
+    if result_covid == -1:
+        result_covid = ("Negative")
+    else:
+        result_covid = ("Positive")
+        print("Covid positive")
+
+    result_fluA = sample_positive.find("H1-2009") or sample_positive.find("InfluenzaAH3")
+    if result_fluA == -1:
+        result_fluA = ("Negative")
+    else:
+        result_fluA = ("Positive")
+        print("FluA Positive")
+
+    result_fluB = sample_positive.find("InfluenzaB")
+    if result_fluB == -1:
+        result_fluB = ("Negative")
+    else:
+        result_fluB = ("Positive")
+        print("FluB Positive")
+
+    result_rsv = sample_positive.find("RespiratorySyncytialVirus")
+    if result_rsv == -1:
+        result_rsv = ("Negative")
+    else:
+        result_rsv = ("Positive")
+        print("RSV Positive")
+
     print(sample_positive)
 
     #Technician ID extraction
@@ -41,7 +70,7 @@ for file_name in os.listdir('C:/Users/wwwya/Desktop/pdf/extract_text'): #loop on
         x = sample_technician[-1]
     print(sample_technician[-1])
 
-#Transfer the data to excel
+    #Transfer the data to excel
 
     #Tell excel the max collums you will use
     last_row_number = excel_sheet.max_row
@@ -53,7 +82,10 @@ for file_name in os.listdir('C:/Users/wwwya/Desktop/pdf/extract_text'): #loop on
     excel_sheet.cell(column = 2, row = last_row_number + 1).value = x
     excel_sheet.cell(column = 3, row = last_row_number + 1).value = sample_date
     excel_sheet.cell(column = 4, row = last_row_number + 1).value = sample_time
-    excel_sheet.cell(column = 5, row = last_row_number + 1).value = sample_positive
+    excel_sheet.cell(column = 5, row = last_row_number + 1).value = result_covid
+    excel_sheet.cell(column = 6, row = last_row_number + 1).value = result_fluA
+    excel_sheet.cell(column = 7, row = last_row_number + 1).value = result_fluB
+    excel_sheet.cell(column = 8, row = last_row_number + 1).value = result_rsv
 
     #This saves the file
 
