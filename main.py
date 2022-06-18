@@ -36,30 +36,30 @@ for file_name in os.listdir('C:/Users/wwwya/Desktop/pdf/extract_text'): #loop on
 
     result_covid = sample_positive.find("Coronavirus2")
     if result_covid == -1:
-        result_covid = ("Negative")
+        result_covid = ("Not Detected")
     else:
-        result_covid = ("Positive")
+        result_covid = ("Detected")
         print("Covid positive")
 
     result_fluA = sample_positive.find("H1-2009") or sample_positive.find("InfluenzaAH3")
     if result_fluA == -1:
-        result_fluA = ("Negative")
+        result_fluA = ("Not Detected")
     else:
-        result_fluA = ("Positive")
+        result_fluA = ("Detected")
         print("FluA Positive")
 
     result_fluB = sample_positive.find("InfluenzaB")
     if result_fluB == -1:
-        result_fluB = ("Negative")
+        result_fluB = ("Not Detected")
     else:
-        result_fluB = ("Positive")
+        result_fluB = ("Detected")
         print("FluB Positive")
 
     result_rsv = sample_positive.find("RespiratorySyncytialVirus")
     if result_rsv == -1:
-        result_rsv = ("Negative")
+        result_rsv = ("Not Detected")
     else:
-        result_rsv = ("Positive")
+        result_rsv = ("Detected")
         print("RSV Positive")
 
     print(sample_positive)
@@ -89,4 +89,4 @@ for file_name in os.listdir('C:/Users/wwwya/Desktop/pdf/extract_text'): #loop on
 
     #This saves the file
 
-    excel_document.save('biofire_pdf_data.xlsx')
+    #excel_document.save('biofire_pdf_data.xlsx')
